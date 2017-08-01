@@ -1,6 +1,8 @@
-FROM node:0.12-slim
+FROM node:8.2.1-slim
 
 MAINTAINER Alberto Conteras <a.contreras@catchdigital.com>
+
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g node-sass postcss-cli autoprefixer watch
 
