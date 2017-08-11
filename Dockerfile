@@ -2,7 +2,7 @@ FROM node:5-slim
 
 MAINTAINER Alberto Conteras <a.contreras@catchdigital.com>
 
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y git python && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g node-sass postcss-cli autoprefixer watch
 
