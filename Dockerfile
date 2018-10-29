@@ -1,15 +1,13 @@
-FROM node:6.13.0-slim
+FROM node:8.12.0-alpine
 
 MAINTAINER Alberto Conteras <a.contreras@catchdigital.com>
 
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+RUN apk update && apk add --no-cache git shadow
 
-RUN npm install -g node-sass postcss-cli autoprefixer watch
+RUN npm install -g node-sass postcss-cli autoprefixer watch --unsafe-perm
 
 WORKDIR /var/www
 
-RUN usermod -a -G users www-data
-
-RUN chown -R www-data:www-data /var/www
+RUN chown -R node:node /var/www
 
 CMD [ "watch", "npm" ]
